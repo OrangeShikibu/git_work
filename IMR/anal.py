@@ -3,10 +3,12 @@ import re
 import CaboCha
 import unicodedata
 import MeCab
+import os
 
-df_kaken = pd.read_excel("/Users/yumoto/my_dev/kaken/data/materials.xlsx")
-df_gimrt = pd.read_csv("../data/GIMRT課題/GIMRT_2020.txt", sep="\t")
+home = os.environ["HOME"]
 
+df_kaken = pd.read_excel(home + "/my_dev/kaken/data/materials.xlsx")
+df_gimrt = pd.read_csv(home + "/my_dev/IMR/data/GIMRT課題/GIMRT_2020.txt", sep="\t")
 
 m = MeCab.Tagger("-Ochasen -r /usr/local/etc/mecabrc")
 # m = MeCab.Tagger("-r /usr/local/etc/mecabrc")
@@ -18,7 +20,6 @@ cp = CaboCha.Parser()  # パーサーを得る
 
 def textCleansing(text):
     """
-    変更
     unicodedataのnormalize関数によって文字の表記を統一する。
         半角カタカナ→全角カタカナ
         全角英字→半角英字
@@ -141,7 +142,7 @@ def main():
     wordbodylist = sorted(set(wordbodylist))
     wordbodylistE = sorted(set(wordbodylistE))
     outxt = "\n".join(wordbodylist)
-    with open("../result/用語確認.txt", "w") as f:
+    with open(home + "/my_dev/IMR/result/用語確認.txt", "w") as f:
         f.write(outxt)
 
     chk = 0
@@ -162,7 +163,7 @@ def main():
 
     kakuninhyosokei = sorted(set(kakuninhyosokei))
     tmptxtline = "\n".join(kakuninhyosokei)
-    with open("../result/用語確認2.txt", "w") as f:
+    with open(home + "/my_dev/IMR/result/用語確認2.txt", "w") as f:
         f.write(tmptxtline)
 
 
