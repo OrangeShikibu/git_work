@@ -4,3 +4,5 @@
   - git init
 - ファイルの状態を確認する
   - git status
+- ファイルをステージングエリアに登録する
+  - git add
