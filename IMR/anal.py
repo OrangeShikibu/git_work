@@ -18,6 +18,7 @@ cp = CaboCha.Parser()  # パーサーを得る
 
 def textCleansing(text):
     """
+    変更
     unicodedataのnormalize関数によって文字の表記を統一する。
         半角カタカナ→全角カタカナ
         全角英字→半角英字
